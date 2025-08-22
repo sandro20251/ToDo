@@ -1,0 +1,18 @@
+{% extends 'td/layout.html' %}
+
+{% block body %}
+<h2>Cadastre-se para adicionar nova tarefa:</h2>
+<form action="#">
+    {% csrf_token %}
+    <label>Usuario:</label><br>
+    <input type="text" name="usernameRegistro"><br>
+    <label>Email:</label><br>
+    <input type="email" name="emailRegistro"><br>
+    <label>Escolha uma senha:</label><br>
+    <input type="password" name="senhaRegistro"><br>
+    <label>Repita a senha:</label><br>
+    <input type="password" name="senha2Registro"><br>
+    <button type="submit">Enviar</button>
+
+</form>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'td/layout.html' %}
+
+{% block body %}
+<div class="novaTarefa">
+    <h2>Acrescente uma nova tarefa:</h2>
+    <form action="#">
+        {% csrf_token %}
+
+        <label>Tarefa:</label><br>
+        <input type="text" name="tarefaTarefa"><br>
+        <label>Quando:</label><br>
+        <input type="date" name="dataTarefa"><br>
+        <label>Local:</label><br>
+        <input type="text" name="localTarefa"><br>
+        <label>Objetivos:</label><br>
+        <input type="text" name="objetivosTarefa"><br>
+        <label>Descrição:</label><br>
+        <input type="text" name="descricaoTarefas"><br>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+<div class="editandoTarefa">
+    <h2>Atualize a tarefa:</h2>
+    <form action="#">
+        {% csrf_token %}
+
+        <label>Tarefa:</label><br>
+        <input type="text" name="tarefaTarefa"><br>
+        <label>Quando:</label><br>
+        <input type="date" name="dataTarefa"><br>
+        <label>Local:</label><br>
+        <input type="text" name="localTarefa"><br>
+        <label>Objetivos:</label><br>
+        <input type="text" name="objetivosTarefa"><br>
+        <label>Descrição:</label><br>
+        <input type="text" name="descricaoTarefas"><br>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+<div class="ListandoTarefas">
+    <h2>Lista de tarefas cadastradas por {{ user.username }}</h2>
+    {% for t in tarefas %}
+    <a href="{{t.id}}">{{ t.tarefa }}</a>
+    <p>{{ t.dataTarefa }}</p>
+    <p>{{ t.LocalTarefa }}</p>
+    <p>{{t.objetivoTarefa}}</p>
+    <p>{{t.descricaoTarefa}}</p>
+    <form action="#">
+        <button type=submit>Atualizar tarefa</button>
+    </form>
+    <form action="#">
+        <button type="sumibt">Remover tarefa</button>
+    </form>
+    <button>Completar tarefa</button>
+    {% endfor %}
+</div>
+
+{% endblock %}
