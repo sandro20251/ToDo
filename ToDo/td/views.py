@@ -64,3 +64,11 @@ def adicionarTarefa(request):
                              objetivoTarefa=objetivo, descricaoTarefa=descricao, autorTarefa=usuario)
         novaTarefa.save()
         return HttpResponseRedirect(reverse('index'))
+
+
+def remover(request, id):
+    if request.method == "POST":
+        objeto = Tarefas.objects.get(pk=id)
+        print(id)
+        objeto.delete()
+        return HttpResponseRedirect(reverse('index'))

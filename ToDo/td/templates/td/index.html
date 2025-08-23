@@ -22,7 +22,7 @@
         <button type="submit">Enviar</button>
     </form>
 </div>
-<div class="hide">
+<div class="hide" id="atualizar">
     <h2>Atualize a tarefa:</h2>
     <form action="#">
         {% csrf_token %}
@@ -49,9 +49,11 @@
     <p>{{t.objetivoTarefa}}</p>
     <p>{{t.descricaoTarefa}}</p>
     <form action="#">
-        <button type=submit id="scriptBtnAtualziar">Atualizar tarefa</button>
+        {% csrf_token %}
+        <button type=submit id="scriptBtnAtualizar">Atualizar tarefa</button>
     </form>
-    <form action="#">
+    <form action="{% url 'remover' t.id %}" method="post">
+        {% csrf_token %}
         <button type="sumibt">Remover tarefa</button>
     </form>
     <button>Completar tarefa</button>
