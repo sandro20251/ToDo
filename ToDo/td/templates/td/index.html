@@ -6,7 +6,7 @@
 {% endif %}
 <div class="novaTarefa">
     <h2>Acrescente uma nova tarefa:</h2>
-    <form action="#">
+    <form action="{% url 'adicionar' %}" method="post">
         {% csrf_token %}
 
         <label>Tarefa:</label><br>
@@ -18,11 +18,11 @@
         <label>Objetivos:</label><br>
         <input type="text" name="objetivosTarefa"><br>
         <label>Descrição:</label><br>
-        <input type="text" name="descricaoTarefas"><br>
+        <textarea name="descricaoTarefas"></textarea><br>
         <button type="submit">Enviar</button>
     </form>
 </div>
-<div class="editandoTarefa">
+<div class="hide">
     <h2>Atualize a tarefa:</h2>
     <form action="#">
         {% csrf_token %}
@@ -49,7 +49,7 @@
     <p>{{t.objetivoTarefa}}</p>
     <p>{{t.descricaoTarefa}}</p>
     <form action="#">
-        <button type=submit>Atualizar tarefa</button>
+        <button type=submit id="scriptBtnAtualziar">Atualizar tarefa</button>
     </form>
     <form action="#">
         <button type="sumibt">Remover tarefa</button>

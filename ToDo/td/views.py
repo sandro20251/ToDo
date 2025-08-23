@@ -10,6 +10,7 @@ from django.urls import reverse
 
 
 def index(request):
+
     tarefas = Tarefas.objects.filter(autorTarefa=request.user)
     return render(request, 'td/index.html', {"tarefas": tarefas, "usuario": request.user})
 
@@ -48,3 +49,18 @@ def registerV(request):
         registro.save()
         return HttpResponseRedirect(reverse('login'))
     return render(request, 'td/register.html', {"mensagem": mensagem})
+
+
+def adicionarTarefa(request):
+    if request.method == "POST":
+        tarefa = request.POST['tarefaTarefa']
+        data = request.POST['dataTarefa']
+        local = request.POST['localTarefa']
+        objetivo = request.POST['objetivosTarefa']
+        descricao = request.POST['descricaoTarefas']
+        usuario = request.user
+
+        novaTarefa = Tarefas(tarefa=tarefa, dataTarefa=data, LocalTarefa=local,
+                             objetivoTarefa=objetivo, descricaoTarefa=descricao, autorTarefa=usuario)
+        novaTarefa.save()
+        return HttpResponseRedirect(reverse('index'))
