@@ -28,29 +28,33 @@
         {% csrf_token %}
 
         <label>Tarefa:</label><br>
-        <input type="text" name="tarefaTarefa"><br>
+        <input type="text" name="tarefaTarefa" id="aTarefa"><br>
         <label>Quando:</label><br>
-        <input type="date" name="dataTarefa"><br>
+        <input type="date" name="dataTarefa" id="aData"><br>
         <label>Local:</label><br>
-        <input type="text" name="localTarefa"><br>
+        <input type="text" name="localTarefa" id="aLocal"><br>
         <label>Objetivos:</label><br>
-        <input type="text" name="objetivosTarefa"><br>
+        <input type="text" name="objetivosTarefa" id="aObjetivo"><br>
         <label>Descrição:</label><br>
-        <input type="text" name="descricaoTarefas"><br>
+        <input type="text" name="descricaoTarefas" id="aDescricao"><br>
         <button type="submit">Enviar</button>
     </form>
 </div>
 <div class="ListandoTarefas">
-    <h2>Lista de tarefas cadastradas por {{ user.username }}</h2>
+    <h2>Lista de tarefas cadastradas por {{ user.username }}:</h2>
     {% for t in tarefas %}
-    <a href="{{t.id}}">{{ t.tarefa }}</a>
-    <p>{{ t.dataTarefa }}</p>
-    <p>{{ t.LocalTarefa }}</p>
-    <p>{{t.objetivoTarefa}}</p>
-    <p>{{t.descricaoTarefa}}</p>
+    <a href="{{t.id}}" class="sTarefa">{{ t.tarefa }}</a>
+    <p class="sData">{{ t.dataTarefa }}</p>
+    <p class="sLocal">{{ t.LocalTarefa }}</p>
+    <p class="sObjetivo">{{t.objetivoTarefa}}</p>
+    <p class=sDescricao>{{t.descricaoTarefa}}</p>
     <form action="#">
         {% csrf_token %}
-        <button type=submit id="scriptBtnAtualizar">Atualizar tarefa</button>
+        <button type="submit" class="scriptBtnAtualizar" data-tarefa="{{ t.tarefa }}"
+            data-data="{{ t.dataTarefa|date:'Y-m-d' }}" data-local="{{ t.LocalTarefa }}"
+            data-objetivo="{{ t.objetivoTarefa }}" data-descricao="{{ t.descricaoTarefa }}">
+            Atualizar tarefa
+        </button>
     </form>
     <form action="{% url 'remover' t.id %}" method="post">
         {% csrf_token %}
