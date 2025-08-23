@@ -14,8 +14,9 @@
         <h1>Tarefas:</h1>
     </header>
     <nav>
-        <a href="#">Login</a>
-        <a href="#">Logout</a>
+        <a href="{% url 'register' %}">Registrar</a>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'logout' %}">Logout</a>
     </nav>
     {% block body %}{% endblock %}
     <script src="{% static 'td/script.js' %}"></script>

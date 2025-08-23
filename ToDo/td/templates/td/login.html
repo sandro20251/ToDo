@@ -2,7 +2,7 @@
 
 {% block body %}
 <h2>Faça seu login:</h2>
-<form action="#">
+<form action="{% url 'login' %}" method="post">
     {% csrf_token %}
     <label>Usuário:</label><br>
     <input type="text" name="username"><br>

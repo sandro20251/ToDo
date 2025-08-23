@@ -1,6 +1,9 @@
 {% extends 'td/layout.html' %}
 
 {% block body %}
+{% if usuario %}
+<h2>Bem vindo, {{user.username}}</h2>
+{% endif %}
 <div class="novaTarefa">
     <h2>Acrescente uma nova tarefa:</h2>
     <form action="#">

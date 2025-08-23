@@ -2,7 +2,10 @@
 
 {% block body %}
 <h2>Cadastre-se para adicionar nova tarefa:</h2>
-<form action="#">
+{% if mensagem %}
+{{ mensagem }}
+{% endif %}
+<form action="{% url 'register' %}" method="post">
     {% csrf_token %}
     <label>Usuario:</label><br>
     <input type="text" name="usernameRegistro"><br>
