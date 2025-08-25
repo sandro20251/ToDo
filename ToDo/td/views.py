@@ -6,13 +6,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
 def index(request):
+    if request.user.is_authenticated:
+        tarefas = Tarefas.objects.filter(autorTarefa=request.user)
+    else:
+        tarefas = []  # ou talvez redirecionar para login
 
-    tarefas = Tarefas.objects.filter(autorTarefa=request.user)
-    return render(request, 'td/index.html', {"tarefas": tarefas, "usuario": request.user})
+    return render(request, 'td/index.html', {"tarefas": tarefas})
 
 
 def loginV(request):
@@ -71,4 +75,23 @@ def remover(request, id):
         objeto = Tarefas.objects.get(pk=id)
         print(id)
         objeto.delete()
+        return HttpResponseRedirect(reverse('index'))
+
+
+def atualizar(request):
+    if request.method == "POST":
+        id = request.POST['idTarefa2']
+        tarefa = request.POST['tarefaTarefa2']
+        data = request.POST['dataTarefa2']
+        local = request.POST['localTarefa2']
+        objetivo = request.POST['objetivosTarefa2']
+        descricao = request.POST['descricaoTarefas2']
+
+        objeto = Tarefas.objects.get(pk=id)
+        objeto.tarefa = tarefa
+        objeto.dataTarefa = data
+        objeto.LocalTarefa = local
+        objeto.objetivoTarefa = objetivo
+        objeto.descricaoTarefa = descricao
+        objeto.save()
         return HttpResponseRedirect(reverse('index'))

@@ -22,21 +22,24 @@
         <button type="submit">Enviar</button>
     </form>
 </div>
+<!-- Crie uma div para captrar os dados a atualizar -->
 <div class="hide" id="atualizar">
     <h2>Atualize a tarefa:</h2>
-    <form action="#">
-        {% csrf_token %}
 
+    <form action="{% url 'atualizar' %}" method="post">
+        {% csrf_token %}
+        <label>id</label><br>
+        <input type="text" name="idTarefa2" id="aId" readonly><br>
         <label>Tarefa:</label><br>
-        <input type="text" name="tarefaTarefa" id="aTarefa"><br>
+        <input type="text" name="tarefaTarefa2" id="aTarefa"><br>
         <label>Quando:</label><br>
-        <input type="date" name="dataTarefa" id="aData"><br>
+        <input type="date" name="dataTarefa2" id="aData"><br>
         <label>Local:</label><br>
-        <input type="text" name="localTarefa" id="aLocal"><br>
+        <input type="text" name="localTarefa2" id="aLocal"><br>
         <label>Objetivos:</label><br>
-        <input type="text" name="objetivosTarefa" id="aObjetivo"><br>
+        <input type="text" name="objetivosTarefa2" id="aObjetivo"><br>
         <label>Descrição:</label><br>
-        <input type="text" name="descricaoTarefas" id="aDescricao"><br>
+        <input type="text" name="descricaoTarefas2" id="aDescricao"><br>
         <button type="submit">Enviar</button>
     </form>
 </div>
@@ -50,7 +53,8 @@
     <p class=sDescricao>{{t.descricaoTarefa}}</p>
     <form action="#">
         {% csrf_token %}
-        <button type="submit" class="scriptBtnAtualizar" data-tarefa="{{ t.tarefa }}"
+        <!-- No btn atualizar coloque data-campo para todos os campos assim você puxa os dados do for para o javaScript -->
+        <button type="submit" class="scriptBtnAtualizar" data-id="{{ t.id }}" data-tarefa="{{ t.tarefa }}"
             data-data="{{ t.dataTarefa|date:'Y-m-d' }}" data-local="{{ t.LocalTarefa }}"
             data-objetivo="{{ t.objetivoTarefa }}" data-descricao="{{ t.descricaoTarefa }}">
             Atualizar tarefa
