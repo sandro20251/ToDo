@@ -1,3 +1,49 @@
 .hide {
     display: none;
 }
+
+.headerPai,
+.linksPai,
+.h2NovaTarefaPai,
+.formNovaTarefaPai,
+.h2AtualizarPai,
+.h2Lista {
+    display: flex;
+    justify-content: center;
+}
+
+.novaTarefa,
+.atualizarPai,
+.estiloLista {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.estiloLista {
+    text-align: center;
+}
+
+.linksPai {
+    gap: 10px;
+}
+
+.listaunitaria {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+}
+
+
+
+.a {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

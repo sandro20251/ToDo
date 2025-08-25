@@ -11,12 +11,18 @@
 
 <body>
     <header>
-        <h1>Tarefas:</h1>
+        <div class="headerPai">
+            <h1>Tarefas:</h1>
+        </div>
+
     </header>
     <nav>
-        <a href="{% url 'register' %}">Registrar</a>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'logout' %}">Logout</a>
+        <div class="linksPai">
+            <a href="{% url 'register' %}">Registrar</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+
     </nav>
     {% block body %}{% endblock %}
     <script src="{% static 'td/script.js' %}"></script>

@@ -5,67 +5,93 @@
 <h2>Bem vindo, {{user.username}}</h2>
 {% endif %}
 <div class="novaTarefa">
-    <h2>Acrescente uma nova tarefa:</h2>
-    <form action="{% url 'adicionar' %}" method="post">
-        {% csrf_token %}
+    <div class="h2NovaTarefaPai">
+        <h2>Acrescente uma nova tarefa:</h2>
+    </div>
+    <div class="formNovaTarefaPai">
+        <form action="{% url 'adicionar' %}" method="post">
+            {% csrf_token %}
 
-        <label>Tarefa:</label><br>
-        <input type="text" name="tarefaTarefa"><br>
-        <label>Quando:</label><br>
-        <input type="date" name="dataTarefa"><br>
-        <label>Local:</label><br>
-        <input type="text" name="localTarefa"><br>
-        <label>Objetivos:</label><br>
-        <input type="text" name="objetivosTarefa"><br>
-        <label>Descrição:</label><br>
-        <textarea name="descricaoTarefas"></textarea><br>
-        <button type="submit">Enviar</button>
-    </form>
+            <label>Tarefa:</label><br>
+            <input type="text" name="tarefaTarefa"><br>
+            <label>Quando:</label><br>
+            <input type="date" name="dataTarefa"><br>
+            <label>Local:</label><br>
+            <input type="text" name="localTarefa"><br>
+            <label>Objetivos:</label><br>
+            <input type="text" name="objetivosTarefa"><br>
+            <label>Descrição:</label><br>
+            <textarea name="descricaoTarefas"></textarea><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
 </div>
 <!-- Crie uma div para captrar os dados a atualizar -->
 <div class="hide" id="atualizar">
-    <h2>Atualize a tarefa:</h2>
+    <div class="atualizarPai">
+        <div class="h2AtualizarPai">
+            <h2>Atualize a tarefa:</h2>
+        </div>
 
-    <form action="{% url 'atualizar' %}" method="post">
-        {% csrf_token %}
-        <label>id</label><br>
-        <input type="text" name="idTarefa2" id="aId" readonly><br>
-        <label>Tarefa:</label><br>
-        <input type="text" name="tarefaTarefa2" id="aTarefa"><br>
-        <label>Quando:</label><br>
-        <input type="date" name="dataTarefa2" id="aData"><br>
-        <label>Local:</label><br>
-        <input type="text" name="localTarefa2" id="aLocal"><br>
-        <label>Objetivos:</label><br>
-        <input type="text" name="objetivosTarefa2" id="aObjetivo"><br>
-        <label>Descrição:</label><br>
-        <input type="text" name="descricaoTarefas2" id="aDescricao"><br>
-        <button type="submit">Enviar</button>
-    </form>
+        <div class="formAtualizarPai">
+            <form action="{% url 'atualizar' %}" method="post">
+                {% csrf_token %}
+                <label>id</label><br>
+                <input type="text" name="idTarefa2" id="aId" readonly><br>
+                <label>Tarefa:</label><br>
+                <input type="text" name="tarefaTarefa2" id="aTarefa"><br>
+                <label>Quando:</label><br>
+                <input type="date" name="dataTarefa2" id="aData"><br>
+                <label>Local:</label><br>
+                <input type="text" name="localTarefa2" id="aLocal"><br>
+                <label>Objetivos:</label><br>
+                <input type="text" name="objetivosTarefa2" id="aObjetivo"><br>
+                <label>Descrição:</label><br>
+                <input type="text" name="descricaoTarefas2" id="aDescricao"><br>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+
 </div>
 <div class="ListandoTarefas">
-    <h2>Lista de tarefas cadastradas por {{ user.username }}:</h2>
-    {% for t in tarefas %}
-    <a href="{{t.id}}" class="sTarefa">{{ t.tarefa }}</a>
-    <p class="sData">{{ t.dataTarefa }}</p>
-    <p class="sLocal">{{ t.LocalTarefa }}</p>
-    <p class="sObjetivo">{{t.objetivoTarefa}}</p>
-    <p class=sDescricao>{{t.descricaoTarefa}}</p>
-    <form action="#">
-        {% csrf_token %}
-        <!-- No btn atualizar coloque data-campo para todos os campos assim você puxa os dados do for para o javaScript -->
-        <button type="submit" class="scriptBtnAtualizar" data-id="{{ t.id }}" data-tarefa="{{ t.tarefa }}"
-            data-data="{{ t.dataTarefa|date:'Y-m-d' }}" data-local="{{ t.LocalTarefa }}"
-            data-objetivo="{{ t.objetivoTarefa }}" data-descricao="{{ t.descricaoTarefa }}">
-            Atualizar tarefa
-        </button>
-    </form>
-    <form action="{% url 'remover' t.id %}" method="post">
-        {% csrf_token %}
-        <button type="sumibt">Remover tarefa</button>
-    </form>
-    <button>Completar tarefa</button>
-    {% endfor %}
+
+    <div class="h2Lista">
+        <h2>Lista de tarefas cadastradas por {{ user.username }}:</h2>
+    </div>
+    <div class="a">
+        {% for t in tarefas %}
+        <div class="listaunitaria">
+            <a href="{{t.id}}" class="sTarefa">{{ t.tarefa }}</a>
+            <p class="sData">{{ t.dataTarefa }}</p>
+            <p class="sLocal">{{ t.LocalTarefa }}</p>
+            <p class="sObjetivo">{{t.objetivoTarefa}}</p>
+            <p class=sDescricao>{{t.descricaoTarefa}}</p>
+            <form action="#">
+                {% csrf_token %}
+                <!-- No btn atualizar coloque data-campo para todos os campos assim você puxa os dados do for para o javaScript -->
+                <button type="submit" class="scriptBtnAtualizar" data-id="{{ t.id }}" data-tarefa="{{ t.tarefa }}"
+                    data-data="{{ t.dataTarefa|date:'Y-m-d' }}" data-local="{{ t.LocalTarefa }}"
+                    data-objetivo="{{ t.objetivoTarefa }}" data-descricao="{{ t.descricaoTarefa }}">
+                    Atualizar tarefa
+                </button>
+            </form>
+            <form action="{% url 'remover' t.id %}" method="post">
+                {% csrf_token %}
+                <button type="sumibt">Remover tarefa</button>
+            </form>
+            <button>Completar tarefa</button>
+        </div>
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
 </div>
 
 {% endblock %}
