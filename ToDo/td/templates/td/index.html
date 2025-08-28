@@ -14,15 +14,15 @@
             {% csrf_token %}
 
             <label>Tarefa:</label><br>
-            <input type="text" name="tarefaTarefa"><br>
+            <input type="text" name="tarefaTarefa" required><br>
             <label>Quando:</label><br>
-            <input type="date" name="dataTarefa"><br>
+            <input type="date" name="dataTarefa" required><br>
             <label>Local:</label><br>
-            <input type="text" name="localTarefa"><br>
+            <input type="text" name="localTarefa" required><br>
             <label>Objetivos:</label><br>
-            <input type="text" name="objetivosTarefa"><br>
+            <input type="text" name="objetivosTarefa" required><br>
             <label>Descrição:</label><br>
-            <textarea name="descricaoTarefas"></textarea><br>
+            <textarea name="descricaoTarefas" required></textarea><br>
             <button type="submit"><i class="fa fa-plus"></i></button>
         </form>
     </div>

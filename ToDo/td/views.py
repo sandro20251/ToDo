@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from django.core.exceptions import ValidationError
 # Create your views here.
 
 
@@ -56,6 +58,7 @@ def registerV(request):
 
 
 def adicionarTarefa(request):
+ 
     if request.method == "POST":
         tarefa = request.POST['tarefaTarefa']
         data = request.POST['dataTarefa']
@@ -65,10 +68,10 @@ def adicionarTarefa(request):
         usuario = request.user
 
         novaTarefa = Tarefas(tarefa=tarefa, dataTarefa=data, LocalTarefa=local,
-                             objetivoTarefa=objetivo, descricaoTarefa=descricao, autorTarefa=usuario)
+                                objetivoTarefa=objetivo, descricaoTarefa=descricao, autorTarefa=usuario)
         novaTarefa.save()
         return HttpResponseRedirect(reverse('index'))
-
+    
 
 def remover(request, id):
     if request.method == "POST":
