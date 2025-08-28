@@ -16,7 +16,8 @@ def index(request):
     if request.user.is_authenticated:
         tarefas = Tarefas.objects.filter(autorTarefa=request.user)
     else:
-        tarefas = []  # ou talvez redirecionar para login
+        # ou talvez redirecionar para login
+        return HttpResponseRedirect(reverse('login'))
 
     return render(request, 'td/index.html', {"tarefas": tarefas})
 
@@ -57,8 +58,9 @@ def registerV(request):
     return render(request, 'td/register.html', {"mensagem": mensagem})
 
 
+@login_required
 def adicionarTarefa(request):
- 
+
     if request.method == "POST":
         tarefa = request.POST['tarefaTarefa']
         data = request.POST['dataTarefa']
@@ -68,11 +70,12 @@ def adicionarTarefa(request):
         usuario = request.user
 
         novaTarefa = Tarefas(tarefa=tarefa, dataTarefa=data, LocalTarefa=local,
-                                objetivoTarefa=objetivo, descricaoTarefa=descricao, autorTarefa=usuario)
+                             objetivoTarefa=objetivo, descricaoTarefa=descricao, autorTarefa=usuario)
         novaTarefa.save()
         return HttpResponseRedirect(reverse('index'))
-    
 
+
+@login_required
 def remover(request, id):
     if request.method == "POST":
         objeto = Tarefas.objects.get(pk=id)
@@ -81,6 +84,7 @@ def remover(request, id):
         return HttpResponseRedirect(reverse('index'))
 
 
+@login_required
 def atualizar(request):
     if request.method == "POST":
         id = request.POST['idTarefa2']

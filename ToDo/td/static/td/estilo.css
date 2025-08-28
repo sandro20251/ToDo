@@ -43,6 +43,12 @@
 
 }
 
+.novoEstilo {
+    background-color: #3B82F6;
+    color: #E5E7EB;
+
+    
+}
 
 
 
@@ -150,4 +156,9 @@ h2 {
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
+}
+
+#curtir2 {
+    display: flex;
+    justify-content: center;
 }

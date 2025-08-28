@@ -8,5 +8,6 @@ urlpatterns = [
     path('register/', views.registerV, name='register'),
     path('adicionar/', views.adicionarTarefa, name="adicionar"),
     path('remover/<int:id>', views.remover, name="remover"),
-    path("atualizar/", views.atualizar, name="atualizar")
+    path("atualizar/", views.atualizar, name="atualizar"),
+
 ]

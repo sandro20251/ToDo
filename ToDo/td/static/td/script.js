@@ -1,28 +1,34 @@
-// buscque os campos da div de atualizar
 let tarefaAtu = document.querySelector('#aTarefa');
 let dataAtu = document.querySelector('#aData');
 let localAtu = document.querySelector('#aLocal');
 let objetivoAtu = document.querySelector('#aObjetivo');
 let descricaoAtu = document.querySelector('#aDescricao');
-let idAtu = document.querySelector('#aId')
+let idAtu = document.querySelector('#aId');
+
+let curtir2 = document.querySelector('#curtir2')
+
 // ao ocorrer um clique no documento:
 document.addEventListener('click', function (e) {
-    // detecte o elemento que foi clicado
-    const targetEl = e.target.closest('.scriptBtnAtualizar');
-    // se o elemento clicado contem uma classe com o nomeDaClasse:
-    if (targetEl.classList.contains('scriptBtnAtualizar')) {
+    // Botão atualizar
+    const btnAtualizar = e.target.closest('.scriptBtnAtualizar');
+    if (btnAtualizar) { // só acessa se existir
         e.preventDefault();
-
-        // Mostra o formulário de atualização
         const atualizarDiv = document.querySelector('#atualizar');
         atualizarDiv.classList.remove('hide');
 
-        // Pega os valores do botão clicado
-        idAtu.value = targetEl.dataset.id;
-        tarefaAtu.value = targetEl.dataset.tarefa;
-        dataAtu.value = targetEl.dataset.data;
-        localAtu.value = targetEl.dataset.local;
-        objetivoAtu.value = targetEl.dataset.objetivo;
-        descricaoAtu.value = targetEl.dataset.descricao;
+        idAtu.value = btnAtualizar.dataset.id;
+        tarefaAtu.value = btnAtualizar.dataset.tarefa;
+        dataAtu.value = btnAtualizar.dataset.data;
+        localAtu.value = btnAtualizar.dataset.local;
+        objetivoAtu.value = btnAtualizar.dataset.objetivo;
+        descricaoAtu.value = btnAtualizar.dataset.descricao;
     }
-})
+
+    // Botão curtir
+    const BtnCompletar = e.target.closest('.scriptBtnCompletar');
+    if (BtnCompletar) {
+        e.preventDefault();
+        const registro = BtnCompletar.closest('.listaunitaria');
+        registro.classList.toggle('novoEstilo');
+    }
+});

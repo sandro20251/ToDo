@@ -57,6 +57,7 @@
 
 
 </div>
+
 <div class="ListandoTarefas">
 
     <div class="h2Lista">
@@ -65,14 +66,15 @@
     <div class="a">
         {% for t in tarefas %}
         <div class="listaunitaria">
-            <a href="{{t.id}}" class="sTarefa">{{ t.tarefa }}</a>
+            <p class="sTarefa">{{ t.tarefa }}</p>
             <p class="sData">{{ t.dataTarefa }}</p>
             <p class="sLocal">{{ t.LocalTarefa }}</p>
             <p class="sObjetivo">{{t.objetivoTarefa}}</p>
             <p class=sDescricao>{{t.descricaoTarefa}}</p>
             <div class="btnPai">
 
-                {% csrf_token %}
+
+
                 <!-- No btn atualizar coloque data-campo para todos os campos assim você puxa os dados do for para o javaScript -->
                 <button class="scriptBtnAtualizar" data-id="{{ t.id }}" data-tarefa="{{ t.tarefa }}"
                     data-data="{{ t.dataTarefa|date:'Y-m-d' }}" data-local="{{ t.LocalTarefa }}"
@@ -82,7 +84,7 @@
 
                 <form action="{% url 'remover' t.id %}" method="post">
                     {% csrf_token %}
-                    <button type="sumibt" class="btnFilho"><i class="fas fa-backspace"></i></button>
+                    <button type="submit" class="btnFilho"><i class="fas fa-backspace"></i></button>
                 </form>
                 <button class="btnFilho scriptBtnCompletar"><i class="fas fa-check"></i></button>
             </div>
