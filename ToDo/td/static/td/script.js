@@ -8,7 +8,7 @@ let idAtu = document.querySelector('#aId')
 // ao ocorrer um clique no documento:
 document.addEventListener('click', function (e) {
     // detecte o elemento que foi clicado
-    const targetEl = e.target;
+    const targetEl = e.target.closest('.scriptBtnAtualizar');
     // se o elemento clicado contem uma classe com o nomeDaClasse:
     if (targetEl.classList.contains('scriptBtnAtualizar')) {
         e.preventDefault();
@@ -25,4 +25,4 @@ document.addEventListener('click', function (e) {
         objetivoAtu.value = targetEl.dataset.objetivo;
         descricaoAtu.value = targetEl.dataset.descricao;
     }
-});
+})

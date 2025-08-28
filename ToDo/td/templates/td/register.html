@@ -1,21 +1,28 @@
 {% extends 'td/layout.html' %}
 
 {% block body %}
+<hr>
 <h2>Cadastre-se para adicionar nova tarefa:</h2>
 {% if mensagem %}
 {{ mensagem }}
 {% endif %}
-<form action="{% url 'register' %}" method="post">
-    {% csrf_token %}
-    <label>Usuario:</label><br>
-    <input type="text" name="usernameRegistro"><br>
-    <label>Email:</label><br>
-    <input type="email" name="emailRegistro"><br>
-    <label>Escolha uma senha:</label><br>
-    <input type="password" name="senhaRegistro"><br>
-    <label>Repita a senha:</label><br>
-    <input type="password" name="senha2Registro"><br>
-    <button type="submit">Enviar</button>
+<div class="registerPai">
+    <form action="{% url 'register' %}" method="post" class="formRegistro">
+        {% csrf_token %}
 
-</form>
+        <label>Usuario:</label><br>
+        <input type="text" name="usernameRegistro"><br>
+        <label>Email:</label><br>
+        <input type="email" name="emailRegistro"><br>
+        <label>Escolha uma senha:</label><br>
+        <input type="password" name="senhaRegistro"><br>
+        <label>Repita a senha:</label><br>
+        <input type="password" name="senha2Registro"><br>
+        <div class="btnRPai">
+            <button type="submit"><i class="fas fa-plus"></i></button>
+        </div>
+
+    </form>
+</div>
+<hr>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'td/layout.html' %}
 
 {% block body %}
+<hr>
 {% if usuario %}
 <h2>Bem vindo, {{user.username}}</h2>
 {% endif %}
@@ -22,7 +23,7 @@
             <input type="text" name="objetivosTarefa"><br>
             <label>Descrição:</label><br>
             <textarea name="descricaoTarefas"></textarea><br>
-            <button type="submit">Enviar</button>
+            <button type="submit"><i class="fa fa-plus"></i></button>
         </form>
     </div>
 
@@ -49,7 +50,7 @@
                 <input type="text" name="objetivosTarefa2" id="aObjetivo"><br>
                 <label>Descrição:</label><br>
                 <input type="text" name="descricaoTarefas2" id="aDescricao"><br>
-                <button type="submit">Enviar</button>
+                <button type="submit"><i class="fas fa-plus"></i></button>
             </form>
         </div>
     </div>
@@ -69,20 +70,23 @@
             <p class="sLocal">{{ t.LocalTarefa }}</p>
             <p class="sObjetivo">{{t.objetivoTarefa}}</p>
             <p class=sDescricao>{{t.descricaoTarefa}}</p>
-            <form action="#">
+            <div class="btnPai">
+
                 {% csrf_token %}
                 <!-- No btn atualizar coloque data-campo para todos os campos assim você puxa os dados do for para o javaScript -->
-                <button type="submit" class="scriptBtnAtualizar" data-id="{{ t.id }}" data-tarefa="{{ t.tarefa }}"
+                <button class="scriptBtnAtualizar" data-id="{{ t.id }}" data-tarefa="{{ t.tarefa }}"
                     data-data="{{ t.dataTarefa|date:'Y-m-d' }}" data-local="{{ t.LocalTarefa }}"
                     data-objetivo="{{ t.objetivoTarefa }}" data-descricao="{{ t.descricaoTarefa }}">
-                    Atualizar tarefa
+                    <i class="fas fa-plus"></i>
                 </button>
-            </form>
-            <form action="{% url 'remover' t.id %}" method="post">
-                {% csrf_token %}
-                <button type="sumibt">Remover tarefa</button>
-            </form>
-            <button>Completar tarefa</button>
+
+                <form action="{% url 'remover' t.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="sumibt" class="btnFilho"><i class="fas fa-backspace"></i></button>
+                </form>
+                <button class="btnFilho scriptBtnCompletar"><i class="fas fa-check"></i></button>
+            </div>
+
         </div>
 
         {% endfor %}
@@ -93,5 +97,5 @@
 </div>
 
 </div>
-
+<hr>
 {% endblock %}

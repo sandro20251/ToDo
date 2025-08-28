@@ -10,12 +10,13 @@
 .h2Lista {
     display: flex;
     justify-content: center;
+
 }
 
 .novaTarefa,
 .atualizarPai,
 .estiloLista {
-    border: 1px solid black;
+    border: 1px solid #E5E7EB;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
@@ -33,12 +34,16 @@
 }
 
 .listaunitaria {
-    border: 1px solid black;
+    border: 1px solid #E5E7EB;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
-    width: 200px;
+    width: 300px;
+    text-align: center;
+
 }
+
+
 
 
 
@@ -46,4 +51,103 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+input {
+    text-align: left;
+    width: 200px;
+    border-radius: 5px;
+}
+
+textarea {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+button {
+    width: 200px;
+    border-radius: 5px;
+    margin: 5px;
+    height: 20px;
+}
+
+h1,
+h2 {
+    color: #1A1A1A;
+}
+
+label,
+input,
+button {
+    color: #6B7280;
+
+}
+
+
+
+a {
+    color: #3B82F6;
+}
+
+a:active {
+    color: purple;
+}
+
+button {
+    background-color: #F3F4F6;
+    width: 30px;
+}
+
+button:hover {
+    background-color: #3B82F6;
+    color: #F3F4F6;
+
+}
+
+.btnPai {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.registerPai {
+    display: flex;
+
+    justify-content: center;
+}
+
+.btnRPai {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+.formRegistro {
+    border: 1px solid #E5E7EB;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.loginPai {
+    display: flex;
+    justify-content: center;
+}
+
+.btnLogin {
+    display: flex;
+    justify-content: center;
+}
+
+.formLPai {
+    border: 1px solid #E5E7EB;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
 }

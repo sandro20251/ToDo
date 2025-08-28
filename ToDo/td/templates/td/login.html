@@ -1,15 +1,22 @@
 {% extends 'td/layout.html' %}
 
 {% block body %}
+<hr>
 <h2>Faça seu login:</h2>
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <label>Usuário:</label><br>
-    <input type="text" name="username"><br>
-    <label>Senha:</label><br>
-    <input type="password" name="password"><br>
-    <button type="submit">Enviar</button>
-</form>
+<div class="loginPai">
+    <form action="{% url 'login' %}" method="post" class="formLPai">
+        {% csrf_token %}
+        <label>Usuário:</label><br>
+        <input type="text" name="username"><br>
+        <label>Senha:</label><br>
+        <input type="password" name="password"><br>
+        <div class="btnLogin">
+            <button type="submit"><i class="fas fa-plus"></i></button>
+        </div>
+
+    </form>
+</div>
+<hr>
 
 
 {% endblock %}
